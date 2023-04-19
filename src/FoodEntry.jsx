@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient'
-import { nutritionFields } from '../nutritionFields';
+import { nutritionFields } from './nutritionFields';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faCircleCheck, faSquare } from '@fortawesome/pro-light-svg-icons'
 
