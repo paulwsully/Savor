@@ -70,6 +70,7 @@ export const Typeahead = ({ user, activeDate }) => {
         }
     };
 
+
     useEffect(() => {
         setFoods(filteredFoods);
     }, [filteredFoods]);
