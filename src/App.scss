@@ -1,0 +1,266 @@
+@import 'variables';
+
+* {
+    @include scrollbar;
+    user-select: none;
+}
+
+.App {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-columns {
+    width: 50%;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    padding-top: 10vh;
+    // outline: 1px solid red;
+
+    &.column {
+        flex-direction: column;
+    }
+}
+
+.calories-remaining-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    h1 {
+        font-size: 94px;
+        font-weight: 900;
+    }
+
+    span {
+        color: rgba(white, .4);
+        transform: translateY(-15px);
+    }
+}
+
+.food-entry-details {
+    width: 100%;
+    max-width: 700px;
+    font-size: 24px;
+}
+
+.food-list,
+.added-foods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+}
+
+.added-foods {
+    max-height: 400px;
+    overflow: auto;
+    padding-right: 24px;
+    margin-top: 56px;
+}
+
+.typeahead {
+    width: 100%;
+    padding: 8px 16px;
+    background: $color-background-secondary;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    z-index: 1;
+    position: absolute;
+    margin-top: 40px;
+
+    &.active {
+        box-shadow: 0 15px 15px rgba(black, .2);
+
+        .dropdown {
+            height: 100%;
+            max-height: 300px;
+            margin-top: 8px;
+        }
+    }
+
+    .dropdown {
+        height: 0;
+        max-height: 0;
+        overflow: auto;
+        padding-right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 0;
+        transition: all .15s ease-in-out;
+
+        .row:hover {
+            background: rgba(white, .1)
+        }
+    }
+}
+
+.row {
+    display: flex;
+    align-items: center;
+
+    &.space-1 {
+        padding-left: calc(8px * 4);
+    }
+
+    &.space-2 {
+        padding-left: calc(8px * 8);
+    }
+
+    &-right {
+        justify-content: flex-end;
+    }
+
+    &-space-between {
+        justify-content: space-between;
+    }
+
+    &.highlight {
+        background: rgba(white, .1)
+    }
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.label {
+    color: rgba(white, .4)
+}
+
+.actions {
+    position: fixed;
+    bottom: 0;
+    padding: 16px;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    .action {
+        height: 80px;
+        width: 80px;
+        background: $color-primary;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(#111, .99);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding-top: 5vh;
+}
+
+.food-entry {
+    width: 100%;
+    max-width: 542px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    overflow: auto;
+    padding-right: 16px;
+
+    input {
+        padding: 2px 8px;
+        background: $color-background-secondary;
+        border: 1px solid $color-border;
+        border-radius: 4px;
+        max-width: calc(100% - 46px);
+        font-size: 16px;
+    }
+
+    .nutrition-label {
+        font-size: 16px;
+    }
+
+    .nutrition-value {
+        font-size: 16px;
+
+        input {
+            max-width: 57px;
+        }
+
+        .label {
+            min-width: 42px;
+            text-align: center;
+            display: inline-block;
+        }
+    }
+}
+
+.existing-foods {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .added-foods {
+        margin-top: 32px;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.calorie-budget-input {
+
+    padding: 8px 16px;
+    background: $color-background-secondary;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    max-width: calc(100% - 46px)
+}
+
+.row.daily-foods:hover .delete,
+.row.my-foods:hover .delete {
+    opacity: 1;
+    pointer-events: all;
+    transform: translatex(0);
+}
+
+.food-calories {
+    position: relative;
+    min-width: 90px;
+    text-align: right;
+}
+
+.delete {
+    transition: all .15s ease-in-out;
+    position: absolute;
+    background: $color-error;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    left: -38px;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translatex(-15px);
+}
